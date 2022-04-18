@@ -12,7 +12,18 @@ describe('Advanced Automation Practice', function () {
     cy.get('input[type="checkbox"').check(['option2', 'option3', 'option1']);
   });
 
-  it('Automating Dropdowns', function () {
+  it('Automating Static Dropdowns', function () {
     cy.get('select').select('option2').should('have.value', 'option2');
+  });
+
+  it('Automating Dynamic Dropdowns', function () {
+    cy.get('#autocomplete').type('United');
+
+    cy.get('.ui-menu-item div').each(($el, index, $list) => {
+      if ($el.text() === 'United States (USA)') {
+        $el.trigger('click');
+      }
+    });
+    cy.get('#autocomplete').should('have.value', 'United States (USA)');
   });
 });
