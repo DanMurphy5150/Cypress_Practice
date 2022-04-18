@@ -26,4 +26,16 @@ describe('Advanced Automation Practice', function () {
     });
     cy.get('#autocomplete').should('have.value', 'United States (USA)');
   });
+
+  it('Automating finding invisbile elements', function () {
+    cy.get('#displayed-text').should('be.visible');
+    cy.get('#hide-textbox').click();
+    cy.get('#displayed-text').should('not.be.visible');
+    cy.get('#show-textbox').click();
+    cy.get('#displayed-text').should('be.visible');
+  });
+
+  it('Automating Radial Buttons', function () {
+    cy.get('[value="radio2"').check().should('be.checked');
+  });
 });
