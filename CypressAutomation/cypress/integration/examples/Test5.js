@@ -17,4 +17,11 @@ describe('More Automation Pactice', function () {
       }
     });
   });
+  it('How to handle mouse over', function () {
+    // handle invisible elements
+    //cy.contains('Top').click({force: true})
+    cy.get('.mouse-hover-content').invoke('show');
+    cy.contains('Top').click();
+    cy.url().should('include', 'top');
+  });
 });
