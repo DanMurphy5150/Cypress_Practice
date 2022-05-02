@@ -33,4 +33,10 @@ describe('Setting up Test Hooks', function () {
     );
     cy.get('#inlineRadio3').should('be.disabled');
   });
+
+  it('Navigate to shop', function () {
+    cy.get(':nth-child(2) > .nav-link').click();
+    cy.selectProduct('Blackberry');
+    cy.selectProduct('Nokia Edge');
+  });
 });
