@@ -1,9 +1,10 @@
 /// <reference types="Cypress" />
 
 describe('Setting up Test Hooks', function () {
-  before('New Hook', function () {
+  beforeEach('New Hook', function () {
     cy.fixture('example').then(function (data) {
       this.globalData = data;
+      console.log(this.globalData);
     });
   });
 
@@ -36,7 +37,10 @@ describe('Setting up Test Hooks', function () {
 
   it('Navigate to shop', function () {
     cy.get(':nth-child(2) > .nav-link').click();
-    cy.selectProduct('Blackberry');
-    cy.selectProduct('Nokia Edge');
+    console.log(this.globalData);
+    this.globalData.products.forEach(function (element) {
+      cy.selectProduct(element);
+      console.log(element);
+    });
   });
 });
