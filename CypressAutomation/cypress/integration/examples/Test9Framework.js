@@ -1,4 +1,6 @@
 /// <reference types="Cypress" />
+import HomePage from '../pageObjects/HomePage.js';
+import ProductPage from '../pageObjects/ProductPage.js';
 
 describe('Setting up Test Hooks', function () {
   beforeEach('New Hook', function () {
@@ -20,27 +22,24 @@ describe('Setting up Test Hooks', function () {
   // })
 
   it('First Test', function () {
+    const homePage = new HomePage();
     cy.visit('https://rahulshettyacademy.com/angularpractice/');
-    cy.get('form.ng-untouched > :nth-child(1)').type(this.globalData.name);
-    cy.get('select').select(this.globalData.gender);
-    cy.get(':nth-child(4) > .ng-untouched').should(
-      'have.value',
-      this.globalData.name
-    );
-    cy.get("input[name='name']:nth-child(2)").should(
-      'have.attr',
-      'minlength',
-      '2'
-    );
-    cy.get('#inlineRadio3').should('be.disabled');
+    homePage.getEditBox().type(this.globalData.name);
+    homePage.getGender().select(this.globalData.gender);
+    homePage.getTwoWayDataBinding().should('have.value', this.globalData.name);
+    homePage.getEditBox().should('have.attr', 'minlength', '2');
+    homePage.getEnterepreneaur().should('be.disabled');
   });
 
   it('Navigate to shop', function () {
-    cy.get(':nth-child(2) > .nav-link').click();
+    const homePage = new HomePage();
+    const productsPage = new ProductPage();
+    homePage.getShopTab().click();
     console.log(this.globalData);
     this.globalData.products.forEach(function (element) {
       cy.selectProduct(element);
       console.log(element);
     });
+    productsPage.checkoutButton().click();
   });
 });
