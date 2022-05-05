@@ -41,6 +41,26 @@ describe('Setting up Test Hooks', function () {
       console.log(element);
     });
     productsPage.checkoutButton().click();
+    let productSum = 0;
+    cy.get('tr td:nth-child(4) strong')
+      .each((el, index, list) => {
+        cy.log(el.text());
+        const priceText = el.text();
+        let integerText = priceText.split(' ');
+        integerText = integerText[1].trim();
+        productSum = Number(productSum) + Number(integerText);
+        cy.log('IntegerText: ' + integerText);
+        cy.log('ProductSum: ' + productSum);
+      })
+      .then(function () {
+        cy.log('finalSum: ' + productSum);
+      });
+    cy.get('h3 strong').then(function (el) {
+      const checkoutAmount = el.text();
+      let formatedCheckoutAmount = checkoutAmount.split(' ');
+      formatedCheckoutAmount = formatedCheckoutAmount[1].trim();
+      expect(Number(formatedCheckoutAmount)).to.equal(productSum);
+    });
     cy.contains('Checkout').click();
     cy.get('#country').type('United States of America');
     cy.get('.suggestions > ul > li > a').click();
