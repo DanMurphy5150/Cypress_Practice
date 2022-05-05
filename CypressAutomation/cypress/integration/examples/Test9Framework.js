@@ -23,7 +23,7 @@ describe('Setting up Test Hooks', function () {
 
   it('First Test', function () {
     const homePage = new HomePage();
-    cy.visit('https://rahulshettyacademy.com/angularpractice/');
+    cy.visit(Cypress.env('url'));
     homePage.getEditBox().type(this.globalData.name);
     homePage.getGender().select(this.globalData.gender);
     homePage.getTwoWayDataBinding().should('have.value', this.globalData.name);
