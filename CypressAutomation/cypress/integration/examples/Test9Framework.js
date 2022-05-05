@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
-import HomePage from '../pageObjects/HomePage.js';
-import ProductPage from '../pageObjects/ProductPage.js';
+import HomePage from '../../support/pageObjects/HomePage.js';
+import ProductPage from '../../support/pageObjects/ProductPage.js';
 
 describe('Setting up Test Hooks', function () {
   beforeEach('New Hook', function () {
