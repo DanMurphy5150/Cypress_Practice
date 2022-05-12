@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "open": "./node_modules/.bin/cypress open"
+    "open": "./node_modules/.bin/cypress open",
+    "dashboard": "./node_modules/.bin/cypress run --record --key 81945477-8a0d-47bf-9021-cc30ccfd7bce"
   },
   "author": "",
   "license": "ISC",
