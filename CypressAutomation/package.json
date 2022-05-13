@@ -4,14 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/cypress run",
     "open": "./node_modules/.bin/cypress open",
-    "dashboard": "./node_modules/.bin/cypress run --record --key 81945477-8a0d-47bf-9021-cc30ccfd7bce"
+    "dashboard": "npm run test -- --record --key 81945477-8a0d-47bf-9021-cc30ccfd7bce",
+    "headTest": "npm run test -- --headed",
+    "chromeTest": "npm run test -- --browser chrome",
+    "GreenKartTest": "npm run test -- --spec \"cypress/integration/examples/GreenKart/*\""
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^9.5.0",
-    "cypress-iframe": "^1.0.1"
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-iframe": "^1.0.1",
+    "mocha": "^10.0.0",
+    "mochawesome": "^7.1.3"
   }
 }

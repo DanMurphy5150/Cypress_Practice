@@ -6,5 +6,6 @@
   "env": {
     "url": "https://rahulshettyacademy.com/angularpractice/"
   },
-  "projectId": "xp3bt5"
+  "projectId": "xp3bt5",
+  "testFiles": "**/*.feature"
 }
