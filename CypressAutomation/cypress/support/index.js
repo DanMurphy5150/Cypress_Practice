@@ -18,3 +18,4 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+// ./node_modules/.bin/cypress-tags run -e TAGS=

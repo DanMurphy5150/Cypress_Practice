@@ -4,3 +4,6 @@ beforeEach(function () {
     console.log(this.globalData);
   });
 });
+
+// "testFiles": "**/*.feature"
+// add file above to cypress.json to run the integrated tests
